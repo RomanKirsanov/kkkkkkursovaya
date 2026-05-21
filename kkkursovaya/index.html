@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Морской бой онлайн</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container" id="app">
+  <h1>⚓ Морской бой</h1>
+  
+  <div id="menu" class="menu">
+    <input type="text" id="playerName" placeholder="Ваше имя" value="Игрок" maxlength="15">
+    <br>
+    <button id="createRoomBtn">➕ Создать комнату</button>
+    <div class="join-section">
+      <input type="text" id="roomIdInput" placeholder="ID комнаты" maxlength="10">
+      <button id="joinRoomBtn">🚪 Подключиться</button>
+    </div>
+  </div>
+  
+  <div id="roomInfo" style="display:none;">
+    <p>Комната: <b id="roomIdDisplay"></b></p>
+    <p id="playersList"></p>
+    <p id="turnInfo" class="turn-info"></p>
+  </div>
+  
+  <div id="gameView" style="display:none;">
+    <div class="placement-panel" id="placementPanel">
+      <h3>Расстановка кораблей</h3>
+      <div class="ships-list" id="shipsList"></div>
+      <button id="randomPlaceBtn" class="btn-random">🎲 Случайная расстановка</button>
+      <button id="clearBoardBtn" class="btn-clear">🗑️ Очистить поле</button>
+      <button id="readyBtn" class="btn-ready">✅ Готов к бою</button>
+    </div>
+    
+    <div class="gameArea">
+      <div class="board">
+        <h3>🚢 Ваши корабли</h3>
+        <div id="myBoardGrid" class="grid"></div>
+      </div>
+      <div class="board">
+        <h3>👾 Противник</h3>
+        <div id="enemyBoardGrid" class="grid enemy-grid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
