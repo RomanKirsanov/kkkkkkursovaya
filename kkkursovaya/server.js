@@ -146,8 +146,8 @@ const PORT = 3000;
 const HOST = '0.0.0.0';
 
 server.listen(PORT, HOST, () => {
-  console.log(`\n✅ Сервер запущен!`);
-  console.log(`📱 Доступен по адресам:`);
+  console.log(`\n Сервер запущен!`);
+  console.log(` Доступен по адресам:`);
   console.log(`   → Локально: http://localhost:${PORT}`);
   
   // Получаем и показываем локальный IP
@@ -157,7 +157,7 @@ server.listen(PORT, HOST, () => {
     for (const net of nets[name]) {
       if (net.family === 'IPv4' && !net.internal && net.address.startsWith('192.168')) {
         console.log(`   → В сети:   http://${net.address}:${PORT}`);
-        console.log(`\n📌 Друг должен ввести в браузере: http://${net.address}:${PORT}`);
+        console.log(`\n Друг должен ввести в браузере: http://${net.address}:${PORT}`);
       }
     }
   }
