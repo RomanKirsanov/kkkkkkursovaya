@@ -235,10 +235,10 @@ function renderShipsList() {
   });
   
   const orientationBtn = document.createElement('button');
-  orientationBtn.textContent = isHorizontal ? '↔️ Горизонтально' : '↕️ Вертикально';
+  orientationBtn.textContent = isHorizontal ? ' Горизонтально' : ' Вертикально';
   orientationBtn.onclick = () => {
     isHorizontal = !isHorizontal;
-    orientationBtn.textContent = isHorizontal ? '↔️ Горизонтально' : '↕️ Вертикально';
+    orientationBtn.textContent = isHorizontal ? ' Горизонтально' : ' Вертикально';
   };
   orientationBtn.style.marginLeft = '10px';
   orientationBtn.style.background = '#2196f3';
@@ -325,7 +325,7 @@ function updateTurnDisplay() {
   if (!gameActive) {
     turnInfo.innerText = 'Ожидание начала игры...';
   } else {
-    turnInfo.innerText = myTurn ? '🔥 ВАШ ХОД! Стреляйте по полю противника 🔥' : '⏳ ХОД ПРОТИВНИКА... Ожидайте ⏳';
+    turnInfo.innerText = myTurn ? ' ВАШ ХОД! Стреляйте по полю противника ' : ' ХОД ПРОТИВНИКА... Ожидайте ';
   }
 }
 
@@ -388,7 +388,7 @@ socket.on('joinError', (msg) => {
 
 socket.on('updatePlayers', (players) => {
   if (!playersList) return;
-  const list = players.map(p => `${p.name} ${p.ready ? '✅' : '⏳'}`).join(' vs ');
+  const list = players.map(p => `${p.name} ${p.ready ? '' : ''}`).join(' vs ');
   playersList.innerHTML = `Игроки: ${list}`;
   myId = players.find(p => p.id === socket.id)?.id;
   if (players.length === 2) {
@@ -420,7 +420,7 @@ socket.on('moveResult', (data) => {
         return;
       }
       
-      if (turnInfo) turnInfo.innerText = '🔥 ПОПАЛ! Ещё один выстрел! 🔥';
+      if (turnInfo) turnInfo.innerText = ' ПОПАЛ!';
       setTimeout(() => updateTurnDisplay(), 1000);
       renderEnemyBoard();
       return;
@@ -449,7 +449,7 @@ socket.on('opponentMove', (data) => {
 
 socket.on('gameOver', (winnerId) => {
   const isWinner = (winnerId === myId);
-  alert(isWinner ? '🏆 ПОБЕДА! 🏆\nВы уничтожили все корабли противника!' : '💀 ПОРАЖЕНИЕ 💀\nВаши корабли уничтожены...');
+  alert(isWinner ? ' ПОБЕДА! \nВы уничтожили все корабли противника!' : ' ПОРАЖЕНИЕ \nВаши корабли уничтожены...');
   setTimeout(() => location.reload(), 2000);
 });
 
